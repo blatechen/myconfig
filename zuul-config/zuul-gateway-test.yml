@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8200/eureka/
+
+spring:
+  application:
+    name: zuul-gateway
+
+zuul:
+  routes:
+    api-a:  #路由規則a，api-a可以隨便取，主要是下面的攔截規則
+      path: /api-eureka-client1/**
+      serviceId: eureka-client-demo1
+    api-b:
+      path: /api-eureka-client2/**
+      serviceId: eureka-client-demo2
